@@ -18,21 +18,21 @@ subData <- Data[Data$Date %in% c("1/2/2007","2/2/2007"), ]
 
 ## Convert the dates
 subData$Date <- as.Date(subData$Date, format="%d/%m/%Y")
-## datetime <- paste(as.Date(subData$Date), subData$Time)
 datetime <- paste(subData$Date, subData$Time)
 subData$Datetime <- as.POSIXct(datetime)
 
-## Plot graph for Global_active_power vs Datetime
+## Plot graph for Sub_metering vs Datetime
 with(subData, {
-  plot(Sub_metering_1~Datetime, type="l",
-       ylab="Energy sub metering", xlab="")
+  
+  plot(Sub_metering_1~Datetime, type="l", ylab="Energy sub metering", xlab="Datetime")
   lines(Sub_metering_2~Datetime,col='Red')
-  lines(Sub_metering_3~Datetime,col='Blue')
-})
-legend("topright", col=c("black", "red", "blue"), lty=1, lwd=2, 
-       legend=c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+  lines(Sub_metering_3~Datetime,col='Blue') 
+  } )
 
-## Saving the histograms to PNG file device
+  legend("topright", col=c("black", "red", "blue"), lty=1, lwd=1, 
+         c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"))
+
+## Saving the graph to PNG file device
 dev.copy(png, file="plot3.png", height=480, width=480)
 
 ## Close the PNG file device

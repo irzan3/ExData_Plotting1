@@ -13,7 +13,7 @@ unzip(zipfile="./data/household_power_consumption.zip",exdir="./data")
 Data  <- read.csv("./data/household_power_consumption.txt", header=T, sep=";", na.strings="?", 
                   nrows=2075259, check.names=F, stringsAsFactors=F, comment.char="", quote='\"')
 
-## Get only data from 2007-02-01 until 2007-02-02 (2 days)
+## Get the data from 2007-02-01 until 2007-02-02 (2 days) only
 subData <- Data[Data$Date %in% c("1/2/2007","2/2/2007"), ]
 
 ## Plot historgrams for Global_active_power
